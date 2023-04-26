@@ -13,17 +13,17 @@ const client = new CosmosClient({ endpoint, key });
 
 const getBooks: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     context.log('getBooks function processed a request.');
-    
+
     const query = {
-			query: "SELECT * FROM root OFFSET 1 LIMIT 10",
+			query: "SELECT * FROM root OFFSET @offset LIMIT @limit",
 			parameters: [
 				{
 					name: "@offset",
-					value: req.query.offset
+					value: +req.query.offset
 				},
 				{
 					name: '@limit',
-					val: req.query.limit
+					value: +req.query.limit
 				}
 			]
 		}
