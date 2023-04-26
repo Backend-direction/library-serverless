@@ -26,7 +26,7 @@ const removeBook: AzureFunction = async function (context: Context, req: HttpReq
 			context.res = {
 				status: 500,
 				body: 'My custom error' + e.message
-		};
+			};
     }
 };
 
