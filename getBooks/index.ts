@@ -11,19 +11,29 @@ const collectionName = process.env.DB_COLLECTION;
 
 const client = new CosmosClient({ endpoint, key });
 
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('JavaScript HTTP trigger function processed a request.');
+const getBooks: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+    context.log('getBooks function processed a request.');
     
-    const querySpec = {
-        query: "SELECT * FROM c"
-    };
+    const query = {
+			query: "SELECT * FROM root OFFSET 1 LIMIT 10",
+			parameters: [
+				{
+					name: "@offset",
+					value: req.query.offset
+				},
+				{
+					name: '@limit',
+					val: req.query.limit
+				}
+			]
+		}
 
     try {
         const {resources: items} = await client
             .database(databaseName)
             .container(collectionName)
             .items
-            .query(querySpec)
+            .query(query)
             .fetchAll();
 
         context.res = {
@@ -39,4 +49,4 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
 };
 
-export default httpTrigger;
+export default getBooks;
