@@ -15,5 +15,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/GetBook/index.js"
+  "scriptFile": "../dist/getBook/index.js"
 }
