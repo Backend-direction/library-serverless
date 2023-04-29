@@ -17,7 +17,7 @@ const getBook: AzureFunction = async function (context: Context, req: HttpReques
     try {
         const db = client.database(databaseName);
         const container = db.container(collectionName);
-        const bookItem = await container.item(req.query.bookId, req.query.language);
+        const bookItem = await container.item(req.query.bookId, req.query.partitionValue);
         const book = await bookItem.read();
         const itemDetails = book.resource;
 
