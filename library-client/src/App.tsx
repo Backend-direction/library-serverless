@@ -1,5 +1,8 @@
 import React, { useState  } from 'react';
 import './App.css';
+import { ThemeProvider } from '@emotion/react';
+import { lightTheme } from './config/theme/light-theme';
+import Layout from './pages/Layout/Layout';
 
 function App() {
   const [books, setBooks] = useState<any>([]);
@@ -15,21 +18,9 @@ function App() {
     setBooks(result);
   }
   return (
-    <>
-      <div>Here will be my app</div>
-      <button onClick={fetchBooks}>Fetch</button>
-      {
-        books.map((el: any,i: any) => {
-          return (
-            <ul key={i}>
-              <li>{el.author}</li>
-              <li>{el.title}</li>
-              <li>{el.language}</li>
-            </ul>
-          )
-        })
-      }
-    </>
+    <ThemeProvider theme={lightTheme}>
+      <Layout />
+    </ThemeProvider>
   );
 }
 
