@@ -1,5 +1,22 @@
-import { Avatar, Divider, IconButton, Menu, MenuItem } from "@mui/material";
+import { Avatar, Divider, IconButton, Menu, MenuItem, styled } from "@mui/material";
 import { useState } from "react";
+  
+const StyledMenuItem = styled(MenuItem)`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: red;
+  && {
+      margin-top: 2px;
+  }
+  & > a:visited,
+  & > a:active,
+  & > a:focus {
+      clear: both;
+      border: none;
+      outline: 0;
+  }
+`;
 
 interface Props {
     avatar?: string;
@@ -16,46 +33,49 @@ export const ManageAccount = ({ avatar, name }: Props) => {
     setAnchorEl(null);
   };
   
-    const menu = (
-        <Menu 
-          sx={{ width: '120px' }}
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-        >
-          <MenuItem key="version" disabled style={{ color: '#8C8C8C' }}>
-              item 1
-          </MenuItem>
-        
-          <Divider />
-          <MenuItem key="profile">
-            Your Profile
-          </MenuItem>
-          <Divider />
+  const menu = (
+    <Menu 
+      id="basic-menu"
+      anchorEl={anchorEl}
+      open={open}
+      onClose={handleClose}
+    >
+      <MenuItem key="version" disabled style={{ color: '#8C8C8C' }}>
+        v0.0.1
+      </MenuItem>
     
-          <MenuItem key="graphiQLLink">
-              <a href="#">GraphiQL</a>
-          </MenuItem>
-          <MenuItem key="openapiLink">
-            <a href="#">Sign out</a>
-          </MenuItem>
-        </Menu>
-    );
+      <Divider />
 
-    return (
-      <>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={handleClick}
-          color="inherit"
-        >
-          <Avatar />
-        </IconButton>
-        {menu}
-      </>
-    );
+      <MenuItem key="profile">
+        Your Profile
+      </MenuItem>
+      <MenuItem key="favorites">
+        Favorites
+      </MenuItem>
+
+      <Divider />
+
+      <StyledMenuItem key="openapiLink">
+        Sign out
+      </StyledMenuItem>
+    </Menu>
+  );
+
+  return (
+    <>
+      <IconButton
+        size="small"
+        aria-label="account of current user"
+        aria-controls="menu-appbar"
+        aria-haspopup="true"
+        onClick={handleClick}
+        color="inherit"
+      >
+        <Avatar
+          sx={{ width: 34, height: 34 }}
+        />
+      </IconButton>
+      {menu}
+    </>
+  );
 };

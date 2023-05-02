@@ -6,7 +6,9 @@ import { router } from "../../routes/routes";
 const Layout = () => {
   return (
     <>
-      <Header />
+      <Header
+        userName='Vova'
+      />
       <RouterProvider router={router} />
     </>
    );

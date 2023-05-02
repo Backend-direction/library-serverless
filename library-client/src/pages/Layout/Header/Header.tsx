@@ -1,11 +1,14 @@
 import { Box, Typography, styled } from "@mui/material";
 import { ManageAccount } from "../../../components/ManageAccount/ManageAccount";
+import HeaderLinks from "../../../components/HeaderLinks/HeaderLinks";
 
 const HeaderWrapper = styled(Box)(() => {
   return {
     display: 'flex',
     justifyContent: 'space-between',
-    background: 'linear-gradient(rgb(255, 255, 255), 75%, rgb(255, 255, 255))'
+    alignItems: 'center',
+    background: 'linear-gradient(rgb(255, 255, 255), 75%, rgb(255, 255, 255))',
+    padding: '14px'
   }
 });
 
@@ -23,17 +26,18 @@ const NavGroup = styled(Box)(({ theme }) => {
   }
 });
 
-const Header = () => {
+const Header = ({ userName }: { userName: string }) => {
   return ( 
     <HeaderWrapper>
       <WelcomeText>
-        Welcome back
+        Welcome back, <b>{userName}</b>
       </WelcomeText>
       <NavGroup>
-          <ManageAccount
-            avatar=''
-            name='Vova'
-          />
+        <HeaderLinks />
+        <ManageAccount
+          avatar=''
+          name='Vova'
+        />
       </NavGroup>
     </HeaderWrapper>
    );
