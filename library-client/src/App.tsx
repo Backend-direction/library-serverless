@@ -1,5 +1,4 @@
 import React, { useState  } from 'react';
-import './App.css';
 import { ThemeProvider } from '@emotion/react';
 import { lightTheme } from './config/theme/light-theme';
 import Layout from './pages/Layout/Layout';

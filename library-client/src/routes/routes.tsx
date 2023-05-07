@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home/Home";
-import Book from "../pages/Book/Book";
+import HomePage from "../pages/Home/Home";
+import BookDetailsPage from "../pages/BookDeatils/Book";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />
+    element: <HomePage />
   },
   {
     path: 'books/:bookId',
-    element: <Book />
+    element: <BookDetailsPage />
   }
 ])

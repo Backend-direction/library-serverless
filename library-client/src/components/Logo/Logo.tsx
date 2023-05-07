@@ -1,6 +1,10 @@
-import library from '../../library.svg';
+import library from '../../images/library.svg';
 
-const Logo = ({ width }: { width: string}) => {
+type Props = {
+  width: string
+}
+
+const Logo = ({ width }: Props) => {
   return (
     <img
       src={library}
