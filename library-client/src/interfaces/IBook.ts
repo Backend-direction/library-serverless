@@ -1,5 +1,6 @@
 export interface IBook {
   author: string;
+  title: string;
   country: string;
   imageLink: string;
   language: string;

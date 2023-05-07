@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchBooks } from "../../services/books";
 import BookGrid from "../../components/BookGrid/BookGrid";
 
-
 const HomeWrapper = styled(Box)`
   display: flex;
   justify-content: start;
