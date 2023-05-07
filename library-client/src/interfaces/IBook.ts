@@ -7,4 +7,5 @@ export interface IBook {
   link: string;
   pages: number;
   year: number;
+  id: string;
 }

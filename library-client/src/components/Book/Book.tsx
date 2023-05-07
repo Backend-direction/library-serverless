@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,10 +11,9 @@ interface BookProps {
 };
  
 const Book = ({ book }: BookProps) => {
-  console.log(book)
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <CardActionArea component={Link} to={`/books/${book.id}`}>
         <CardMedia
           component="img"
           height="140"

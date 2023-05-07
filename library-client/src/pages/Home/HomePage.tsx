@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Box, styled } from "@mui/material";
 import Logo from "../../components/Logo/Logo";
 import SearchBar from "../../components/SearchBar/SearchBar";
@@ -14,10 +15,9 @@ const HomeWrapper = styled(Box)`
   margin-top: 20px;
 `;
 
-const offset =  0;
-const limit = 10;
-
 const HomePage = () => {
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(10);
   const { isLoading, error, data } = useQuery({
     queryKey: ["books", offset, limit],
     queryFn: () => fetchBooks(offset, limit)
