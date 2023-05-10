@@ -26,7 +26,7 @@ const NavGroup = styled(Box)(({ theme }) => {
   }
 });
 
-const Header = ({ userName }: { userName: string }) => {
+const Header = ({ userName }: { userName: string | undefined }) => {
   return ( 
     <HeaderWrapper>
       <WelcomeText>
