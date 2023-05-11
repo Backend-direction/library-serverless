@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { IBook } from "../../interfaces/IBook";
+import buildImgLink from "../../utils/build-img-link";
 
 interface BookProps {
   book: IBook,
@@ -17,7 +18,7 @@ const Book = ({ book }: BookProps) => {
         <CardMedia
           component="img"
           height="140"
-          image={book.imageLink}
+          image={buildImgLink(book.imageLink)}
           alt={book.title}
         />
         <CardContent>
