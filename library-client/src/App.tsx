@@ -5,6 +5,8 @@ import { ThemeProvider } from '@emotion/react';
 import { lightTheme } from './config/theme/light-theme';
 import Layout from './pages/Layout/LayoutPage';
 import { loginRequest } from './auth/auth.config';
+import Spinner from './components/Spinner/Spinner';
+import { Box, Container } from '@mui/material';
 
 function App({ instance }: { instance: PublicClientApplication}) {
   const authRequest = {
@@ -21,7 +23,9 @@ function App({ instance }: { instance: PublicClientApplication}) {
           <Layout />
         </MsalAuthenticationTemplate>
         <UnauthenticatedTemplate>
-          You need to login in order to see the content
+          <Box sx={{ background: '#275EFE', width: '100vw', height: '100vh' }}>
+            <Spinner />
+          </Box>
         </UnauthenticatedTemplate>
       </ThemeProvider>
     </MsalProvider>

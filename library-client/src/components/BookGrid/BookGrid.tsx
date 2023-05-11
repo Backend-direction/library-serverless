@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { IBook } from "../../interfaces/IBook";
 import Book from "../Book/Book";
+import { CircularProgress } from '@mui/material';
 
 interface BookGridProps {
   isLoading: boolean,
@@ -11,9 +12,7 @@ interface BookGridProps {
  
 const BookGrid = ({ isLoading, isError, books = [] }: BookGridProps) => {
 
-  if(isLoading) return <div>Loading</div>;
-
-  if(isError) return <div>Error</div>;
+  if(isError) return <div>Opps something went wrong</div>;
 
   return (
     <Box sx={{ flexGrow: 1 }} pt={5}>
@@ -28,6 +27,7 @@ const BookGrid = ({ isLoading, isError, books = [] }: BookGridProps) => {
             }) 
           }
       </Grid>
+      {isLoading && <CircularProgress />}
     </Box>
    );
 }

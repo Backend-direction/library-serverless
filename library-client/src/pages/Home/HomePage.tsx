@@ -18,6 +18,7 @@ const HomeWrapper = styled(Box)`
 const HomePage = () => {
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(10);
+  
   const { isLoading, error, data } = useQuery({
     queryKey: ["books", offset, limit],
     queryFn: () => fetchBooks(offset, limit)
