@@ -12,7 +12,7 @@ interface BookProps {
  
 const Book = ({ book }: BookProps) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardActionArea component={Link} to={`/books/${book.id}`}>
         <CardMedia
           component="img"

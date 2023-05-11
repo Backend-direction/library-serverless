@@ -25,8 +25,12 @@ const NavGroup = styled(Box)(({ theme }) => {
     alignItems: 'center',
   }
 });
+interface HeaderProps {
+  userName: string | undefined;
+  onLogOut: () => void;
+}
 
-const Header = ({ userName }: { userName: string | undefined }) => {
+const Header = ({ userName, onLogOut }: HeaderProps) => {
   return ( 
     <HeaderWrapper>
       <WelcomeText>
@@ -36,7 +40,8 @@ const Header = ({ userName }: { userName: string | undefined }) => {
         <HeaderLinks />
         <ManageAccount
           avatar=''
-          name='Vova'
+          name={userName}
+          logOut={onLogOut}
         />
       </NavGroup>
     </HeaderWrapper>

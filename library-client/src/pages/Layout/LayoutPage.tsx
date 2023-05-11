@@ -7,10 +7,18 @@ import { useMsal } from "@azure/msal-react";
 const Layout = () => {
   const { instance } = useMsal();
   const activeAccount = instance.getActiveAccount();
-  
+
+  const logOutHandler = () => {
+    const logoutRequest = {
+      account: activeAccount,
+      postLogoutRedirectUri: "/",
+    };
+    instance.logoutRedirect(logoutRequest);
+  }
+ 
   return (
     <Box px={3} pb={3}>
-      <Header userName={activeAccount?.name} />
+      <Header userName={activeAccount?.name} onLogOut={logOutHandler} />
       <RouterProvider router={router} />
     </Box>
    );

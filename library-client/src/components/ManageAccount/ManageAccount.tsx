@@ -21,9 +21,10 @@ const StyledMenuItem = styled(MenuItem)`
 interface Props {
     avatar?: string;
     name?: string;
+    logOut: () => void; 
 }
 
-export const ManageAccount = ({ avatar, name }: Props) => {
+export const ManageAccount = ({ avatar, name, logOut }: Props) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -55,7 +56,10 @@ export const ManageAccount = ({ avatar, name }: Props) => {
 
       <Divider />
 
-      <StyledMenuItem key="openapiLink">
+      <StyledMenuItem 
+        key="openapiLink"
+        onClick={() => logOut()}
+      >
         Sign out
       </StyledMenuItem>
     </Menu>

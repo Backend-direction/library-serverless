@@ -4,7 +4,7 @@ import { msalInstance } from '../index';
 import { scopes } from "../auth/auth.config";
 
 const BASE_URL = process.env.NODE_ENV === 'development'
-  ? process.env.REACT_APP_LOCAL_API_URL
+  ? process.env.REACT_APP_API_URL_LOCAL
   : process.env.REACT_APP_API_URL
 
 export const queryClient = new QueryClient({

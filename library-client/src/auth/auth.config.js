@@ -5,6 +5,11 @@
 
 import { LogLevel } from "@azure/msal-browser";
 
+const REDIRECT_URL = process.env.NODE_ENV === 'development'
+? process.env.REACT_APP_REDIRECT_URL_LOCAL
+: process.env.REACT_APP_REDIRECT_URL;
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID || '';
+
 /**
  * Enter here the user flows and custom policies for your B2C application
  * To learn more about user flows, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/user-flow-overview
@@ -30,10 +35,10 @@ export const b2cPolicies = {
  */
 export const msalConfig = {
     auth: {
-        clientId: process.env.REACT_APP_CLIENT_ID || '', // This is the ONLY mandatory field that you need to supply.
+        clientId: CLIENT_ID, // This is the ONLY mandatory field that you need to supply.
         authority: b2cPolicies.authorities.signUpSignIn.authority, // Choose SUSI as your default authority.
         knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
-        redirectUri: process.env.REACT_APP_REDIRECT_URL, // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
+        redirectUri: REDIRECT_URL, // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
         postLogoutRedirectUri: '/', // Indicates the page to navigate after logout.
         navigateToLoginRequestUrl: true, // If "true", will navigate back to the original request location before processing the auth code response.
     },
@@ -69,7 +74,7 @@ export const msalConfig = {
 };
 
 export const scopes = [
-    process.env.REACT_APP_CLIENT_ID || ''  
+    CLIENT_ID 
 ]
 
 export const loginRequest = {

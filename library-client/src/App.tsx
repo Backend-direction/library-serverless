@@ -1,12 +1,12 @@
 
+import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import { MsalAuthenticationTemplate, MsalProvider, UnauthenticatedTemplate } from '@azure/msal-react';
 import { ThemeProvider } from '@emotion/react';
 import { lightTheme } from './config/theme/light-theme';
 import Layout from './pages/Layout/LayoutPage';
 import { loginRequest } from './auth/auth.config';
-import { InteractionType } from '@azure/msal-browser';
 
-function App({ instance }: { instance: any}) {
+function App({ instance }: { instance: PublicClientApplication}) {
   const authRequest = {
     ...loginRequest,
   };
