@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { Box, styled } from "@mui/material";
 import Logo from "../../components/Logo/Logo";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { fetchBooks } from "../../services/books";
 import BookGrid from "../../components/BookGrid/BookGrid";
+import { useObserver } from "../../hooks/useObserver";
 
 const HomeWrapper = styled(Box)`
   display: flex;
@@ -15,20 +16,42 @@ const HomeWrapper = styled(Box)`
   margin-top: 20px;
 `;
 
+const DEFAULT_LIMIT = 10;
+
 const HomePage = () => {
-  const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(10);
-  
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["books", offset, limit],
-    queryFn: () => fetchBooks(offset, limit)
+  const [containerRef, isVisible] = useObserver({
+    root: null,
+    rootMargin: "100px",
+    threshold:1.0
   });
+
+  const {
+    data,
+    error,
+    isFetching,
+    fetchNextPage,
+  } = useInfiniteQuery(
+    ['books'],
+    ({ pageParam }) => fetchBooks(pageParam?.nextPage, DEFAULT_LIMIT),
+    {
+      getPreviousPageParam: (previousPage) => previousPage ?? undefined,
+      getNextPageParam: (nextPage) => nextPage ?? undefined,
+    },
+  )
+
+  useEffect(() => {
+    if (isVisible) {
+      fetchNextPage();
+    }
+  }, [isVisible])
 
   return ( 
     <HomeWrapper>
       <Logo width="140" />
-      <SearchBar />
-      <BookGrid isLoading={isLoading} isError={error} books={data}/>
+      <div className="isVisible">{isVisible ? "IN VIEWPORT" : "NOT IN VIEWPORT"}</div>
+        <SearchBar />
+        <BookGrid isLoading={isFetching} isError={error} books={data}/>
+      <div ref={containerRef}></div>
     </HomeWrapper>
    );
 }

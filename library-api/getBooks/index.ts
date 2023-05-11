@@ -19,11 +19,11 @@ const getBooks: AzureFunction = async function (context: Context, req: HttpReque
 			parameters: [
 				{
 					name: "@offset",
-					value: +req.query.offset
+					value: parseInt(req.query.offset, 10)
 				},
 				{
 					name: '@limit',
-					value: +req.query.limit
+					value: parseInt(req.query.limit, 10)
 				}
 			]
 		}
@@ -38,7 +38,11 @@ const getBooks: AzureFunction = async function (context: Context, req: HttpReque
 
         context.res = {
             status: 200,
-            body: items
+            body: {
+                data: items,
+                previousPage: parseInt(req.query.offset, 10),
+                nextPage: parseInt(req.query.offset, 10) + parseInt(req.query.limit, 10)
+            }
         };
     } catch (e) {
         context.res = {

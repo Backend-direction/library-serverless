@@ -200,7 +200,6 @@ const pageAnimations = n2A(18).map((i: number)=>{
     }
   `
 });
-console.log(pageAnimations)
 
 const Spinner: FunctionComponent = () => {
   return ( 

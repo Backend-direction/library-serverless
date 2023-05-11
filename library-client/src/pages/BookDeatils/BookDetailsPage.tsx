@@ -1,9 +1,7 @@
- import Spinner from '../../components/Spinner/Spinner';
- 
 const BookDetailsPage = () => {
   return (
     <div>
-      <Spinner />
+      Details
     </div>
    );
 }
