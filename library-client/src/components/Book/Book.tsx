@@ -14,7 +14,7 @@ interface BookProps {
 const Book = ({ book }: BookProps) => {
   return (
     <Card>
-      <CardActionArea component={Link} to={`/books/${book.id}`}>
+      <CardActionArea component={Link} to={`/books/${book.id}/${book.language}`}>
         <CardMedia
           component="img"
           height="140"

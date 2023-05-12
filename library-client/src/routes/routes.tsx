@@ -8,7 +8,7 @@ export const router = createBrowserRouter([
     element: <HomePage />
   },
   {
-    path: 'books/:bookId',
+    path: 'books/:bookId/:partionId',
     element: <BookDetailsPage />
   }
 ])

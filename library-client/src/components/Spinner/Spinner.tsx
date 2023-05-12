@@ -2,6 +2,7 @@
 import { Container, styled } from "@mui/material";
 import { FunctionComponent } from "react";
 import { keyframes } from '@mui/system';
+import { shouldForwardProp } from "../../utils/custom-component-props";
 
 const Wrapper = styled(Container)`
   width:100%;
@@ -146,11 +147,6 @@ const Wrapper = styled(Container)`
         transform: rotateZ(-90deg);
     }
 }`;
-
-export const shouldForwardProp = <CustomProps extends Record<string, unknown>>(
-  props: Array<keyof CustomProps>,
-  prop: PropertyKey,
-): boolean => !props.includes(prop as string);
 
 const Li = styled('li', {
   shouldForwardProp: (prop) => shouldForwardProp<any>(['num'], prop),

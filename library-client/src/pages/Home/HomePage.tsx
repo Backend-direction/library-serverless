@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Box, styled } from "@mui/material";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import Logo from "../../components/Logo/Logo";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { useInfiniteQuery } from "@tanstack/react-query";
 import { fetchBooks } from "../../services/books";
 import BookGrid from "../../components/BookGrid/BookGrid";
 import { useObserver } from "../../hooks/useObserver";
@@ -48,9 +48,8 @@ const HomePage = () => {
   return ( 
     <HomeWrapper>
       <Logo width="140" />
-      <div className="isVisible">{isVisible ? "IN VIEWPORT" : "NOT IN VIEWPORT"}</div>
-        <SearchBar />
-        <BookGrid isLoading={isFetching} isError={error} books={data}/>
+      <SearchBar />
+      <BookGrid isLoading={isFetching} isError={error} books={data}/>
       <div ref={containerRef}></div>
     </HomeWrapper>
    );
