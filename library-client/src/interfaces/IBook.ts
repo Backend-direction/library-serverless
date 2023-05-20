@@ -8,4 +8,5 @@ export interface IBook {
   pages: number;
   year: number;
   id: string;
+  genre: string;
 }

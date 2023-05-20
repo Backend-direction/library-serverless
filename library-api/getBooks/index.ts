@@ -45,8 +45,9 @@ const getBooks: AzureFunction = async function (context: Context, req: HttpReque
             }
         };
     } catch (e) {
+        context.log(e);
         context.res = {
-            status: 500,
+            status: e.statusCode,
             body: 'Error ' + e.message
         };
     }
