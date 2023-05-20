@@ -47,7 +47,7 @@ const getBooks: AzureFunction = async function (context: Context, req: HttpReque
     } catch (e) {
         context.res = {
             status: 500,
-            body: 'Error' + e.message
+            body: 'Error ' + e.message
         };
     }
 
