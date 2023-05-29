@@ -6,6 +6,7 @@ import BookDescription from "../../components/BookDescription/BookDescription";
 import { useQuery } from "@tanstack/react-query";
 import { fetchBook } from "../../services/book";
 import Spinner from "../../components/Spinner/Spinner";
+import BookOrderDetails from "./BookOrderDetails/BookOrderDetails";
 
 const BookDetailsPage = () => {
   const { bookId, genre } = useParams();
@@ -28,9 +29,7 @@ const BookDetailsPage = () => {
           <BookDescription book={data}/>
         </Grid>
         <Grid lg xs={12}>
-          <div style={{ background: 'orange', height: '400px'}}>
-            Button
-          </div>
+          <BookOrderDetails />
         </Grid>
       </Grid>
     </Box>
