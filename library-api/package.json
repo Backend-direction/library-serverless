@@ -12,7 +12,6 @@
   "dependencies": {
     "@azure/cosmos": "^3.17.3",
     "@senacor/azure-function-middleware": "^2.0.0-alpha.15",
-    "azure-functions-core-tools": "^4.0.5148",
     "dotenv": "^16.0.3",
     "joi": "^17.9.2"
   },
