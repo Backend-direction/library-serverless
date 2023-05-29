@@ -4,6 +4,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Description from "../Description/Description";
 import BookProperties from '../BookProperties/BookProperties';
+import BookAuthor from "../BookAuthor/BookAuthor";
+import BookFeedback from "../BookFeedback/BookFeedback";
 
 const BookDescription = ({ book }: { book : IBook }) => {
   return (
@@ -64,6 +66,12 @@ const BookDescription = ({ book }: { book : IBook }) => {
       </Grid>
       <Grid xs={12}>
         <BookProperties book={book} />
+      </Grid>
+      <Grid xs={12}>
+        <BookAuthor biography={book.description}/>
+      </Grid>
+      <Grid xs={12}>
+        <BookFeedback />
       </Grid>
     </Grid>
   );
