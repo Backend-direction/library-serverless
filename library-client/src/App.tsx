@@ -7,6 +7,8 @@ import Layout from './pages/Layout/LayoutPage';
 import { loginRequest } from './auth/auth.config';
 import Spinner from './components/Spinner/Spinner';
 import { Box, Container } from '@mui/material';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes/routes'
 
 function App({ instance }: { instance: PublicClientApplication}) {
   const authRequest = {
@@ -20,7 +22,7 @@ function App({ instance }: { instance: PublicClientApplication}) {
           interactionType={InteractionType.Redirect} 
           authenticationRequest={authRequest}
         >
-          <Layout />
+          <RouterProvider router={router} />
         </MsalAuthenticationTemplate>
         <UnauthenticatedTemplate>
           <Box sx={{ background: '#275EFE', width: '100vw', height: '100vh' }}>

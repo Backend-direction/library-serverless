@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Theme, styled } from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import BookPreview from "../../components/BookPreview/BookPreview";
 import BookDescription from "../../components/BookDescription/BookDescription";
 import { useQuery } from "@tanstack/react-query";
@@ -8,7 +9,18 @@ import { fetchBook } from "../../services/book";
 import Spinner from "../../components/Spinner/Spinner";
 import BookOrderDetails from "./BookOrderDetails/BookOrderDetails";
 
+const Section = styled(Grid)`
+  &.deault_order {
+    order: 2
+  }
+
+  &.reverse_order {
+    order: 3
+  }
+`
+
 const BookDetailsPage = () => {
+  const lgAndUp = useMediaQuery((theme: Theme) => theme.breakpoints.up('lg'));
   const { bookId, genre } = useParams();
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ['book'],
@@ -25,9 +37,9 @@ const BookDetailsPage = () => {
         <Grid lg xs={12}>
           <BookPreview book={data}/>
         </Grid>
-        <Grid lg={6} xs={12}>
+        <Section lg={6} xs={12} className={lgAndUp ? 'default_order' : 'reverse_order'}>
           <BookDescription book={data}/>
-        </Grid>
+        </Section>
         <Grid lg xs={12}>
           <BookOrderDetails />
         </Grid>

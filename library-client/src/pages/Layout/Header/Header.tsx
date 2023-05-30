@@ -1,6 +1,9 @@
 import { Box, Typography, styled } from "@mui/material";
 import { ManageAccount } from "../../../components/ManageAccount/ManageAccount";
 import HeaderLinks from "../../../components/HeaderLinks/HeaderLinks";
+import Logo from "../../../components/Logo/Logo";
+import { useEffect, useState } from "react";
+import { PathMatch, useMatch, Link } from "react-router-dom";
 
 const HeaderWrapper = styled(Box)(() => {
   return {
@@ -30,12 +33,18 @@ interface HeaderProps {
   onLogOut: () => void;
 }
 
+const renderLogoSection = (isHome: PathMatch<string> | null, userName = 'guest') => {
+  return isHome
+    ? <WelcomeText>Welcome back, <b>{userName}</b></WelcomeText>
+    : <Link to='/'><Logo width="50" /></Link>
+}
+
 const Header = ({ userName, onLogOut }: HeaderProps) => {
+  const isHome = useMatch('/');
+
   return ( 
     <HeaderWrapper>
-      <WelcomeText>
-        Welcome back, <b>{userName}</b>
-      </WelcomeText>
+      {renderLogoSection(isHome, userName)}
       <NavGroup>
         <HeaderLinks />
         <ManageAccount

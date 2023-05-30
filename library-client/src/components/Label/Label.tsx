@@ -4,14 +4,6 @@ import { shouldForwardProp } from '../../utils/custom-component-props';
 
 type LabelProps = PropsWithChildren<{ color: string }>;
 
-// const Wrapper = styled(Box)({
-//   color: 'green',
-//   display: 'flex',
-//   alignItems: 'center',
-//   gap: '5px',
-//   paddingRight: '10px'
-// });
-
 const Wrapper = styled(Box, {
   shouldForwardProp: (prop) => shouldForwardProp<any>(['color'], prop),
 })<any>(({ theme, color }) => ({
