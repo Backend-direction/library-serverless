@@ -17,9 +17,11 @@ const Layout = () => {
   }
  
   return (
-    <Box px={3} pb={3}>
+    <Box>
       <Header userName={activeAccount?.name} onLogOut={logOutHandler} />
-      <Outlet />
+      <Box px={3} pb={3}>
+        <Outlet />
+      </Box>
     </Box>
    );
 }

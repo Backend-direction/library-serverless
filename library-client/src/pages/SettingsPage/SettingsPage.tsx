@@ -20,6 +20,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import { settings } from "./settings-items";
 import { grey } from '@mui/material/colors';
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { Outlet, Link, useLocation } from "react-router-dom";
 
 interface SettingsPageProps {
   
@@ -80,13 +81,14 @@ const DrawerHeader = styled('div')(({ theme }) => ({
  
 const SettingsPage = () => {
   const [open, setOpen] = React.useState(false);
-
+  const { pathname } = useLocation();
+  console.log(pathname)
   const handleDrawerState = () => {
     setOpen(prev => !prev);
   }
 
   return ( 
-    <>
+    <Box sx={{ display: 'flex' }}>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           {open && 
@@ -104,30 +106,36 @@ const SettingsPage = () => {
         <Divider />
         <List>
           {settings.map((setting, index) => (
-            <ListItem key={index} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+            <Link to={setting.link} style={{textDecoration: 'none', color: grey[700] }}>
+              <ListItem key={index} disablePadding sx={{ display: 'block' }} selected={pathname.includes(setting.link)}>
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
                   }}
                 >
-                  <setting.icon />
-                </ListItemIcon>
-                <ListItemText primary={setting.section} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <setting.icon />
+                  </ListItemIcon>
+                  <ListItemText primary={setting.section} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+            
+            </Link>
           ))}
         </List>
       </Drawer>
-    </>
+      <Box sx={{ flexGrow: 1, p: 3 }}>
+        <Outlet />
+      </Box>
+    </Box>
    );
 }
  

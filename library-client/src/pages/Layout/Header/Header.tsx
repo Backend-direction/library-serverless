@@ -1,4 +1,4 @@
-import { Box, Typography, styled } from "@mui/material";
+import { Box, Typography, styled, Divider } from "@mui/material";
 import { ManageAccount } from "../../../components/ManageAccount/ManageAccount";
 import HeaderLinks from "../../../components/HeaderLinks/HeaderLinks";
 import Logo from "../../../components/Logo/Logo";
@@ -42,17 +42,21 @@ const Header = ({ userName, onLogOut }: HeaderProps) => {
   const isHome = useMatch('/');
 
   return ( 
-    <HeaderWrapper>
-      {renderLogoSection(isHome, userName)}
-      <NavGroup>
-        <HeaderLinks />
-        <ManageAccount
-          avatar=''
-          name={userName}
-          logOut={onLogOut}
-        />
-      </NavGroup>
-    </HeaderWrapper>
+    <>
+      <HeaderWrapper>
+        {renderLogoSection(isHome, userName)}
+        <NavGroup>
+          <HeaderLinks />
+          <ManageAccount
+            avatar=''
+            name={userName}
+            logOut={onLogOut}
+          />
+        </NavGroup>
+      </HeaderWrapper>
+      <Divider orientation="horizontal" flexItem />
+  
+    </>
    );
 }
  
