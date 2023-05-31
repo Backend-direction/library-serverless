@@ -1,4 +1,5 @@
-import { Box, Button, Link, Tooltip, styled } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Box, Button, Tooltip, styled } from "@mui/material";
 import SettingsSuggestOutlinedIcon from '@mui/icons-material/SettingsSuggestOutlined';
 import PollOutlinedIcon from '@mui/icons-material/PollOutlined';
 
@@ -35,7 +36,7 @@ const HeaderLinks = () => {
     return (
       <LinksWrapper>
          <LinkWrapper>
-            <Link href="/analytics">
+            <Link to="/analytics">
               <Button>
                 <Tooltip title="View Library usage analytics">
                   <NavTitleContainer>
@@ -47,7 +48,7 @@ const HeaderLinks = () => {
             </Link>
           </LinkWrapper>
           <LinkWrapper style={{ marginRight: 12 }}>
-            <Link href="/settings">
+            <Link to="/settings">
               <Button>
                 <Tooltip title="Manage your Libary settings">
                   <SettingsSuggestOutlinedIcon />

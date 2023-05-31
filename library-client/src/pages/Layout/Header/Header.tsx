@@ -2,7 +2,6 @@ import { Box, Typography, styled } from "@mui/material";
 import { ManageAccount } from "../../../components/ManageAccount/ManageAccount";
 import HeaderLinks from "../../../components/HeaderLinks/HeaderLinks";
 import Logo from "../../../components/Logo/Logo";
-import { useEffect, useState } from "react";
 import { PathMatch, useMatch, Link } from "react-router-dom";
 
 const HeaderWrapper = styled(Box)(() => {

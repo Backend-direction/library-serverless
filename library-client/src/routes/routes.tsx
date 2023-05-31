@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/Home/HomePage";
 import BookDetailsPage from "../pages/BookDeatils/BookDetailsPage";
 import Layout from "../pages/Layout/LayoutPage";
+import SettingsPage from "../pages/SettingsPage/SettingsPage";
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         path: 'books/:genre/:bookId',
         element: <BookDetailsPage />
+      },
+      {
+        path: 'settings',
+        element: <SettingsPage />
       }
     ]
   },
