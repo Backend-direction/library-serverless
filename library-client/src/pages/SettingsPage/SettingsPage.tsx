@@ -100,7 +100,7 @@ const SettingsPage = () => {
             )
           }
           <IconButton onClick={handleDrawerState}>
-          {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          {open ? <ChevronLeftIcon  /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />

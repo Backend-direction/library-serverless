@@ -1,8 +1,9 @@
 import { createTheme } from "@mui/material/styles";
-import { green, purple } from '@mui/material/colors';
+import { green, purple, deepPurple } from '@mui/material/colors';
 
 export const lightTheme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
       main: purple[500],
     },
@@ -12,5 +13,14 @@ export const lightTheme = createTheme({
     background: {
       paper: 'rgb(231, 235, 240)'
     }
+  }
+});
+
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: deepPurple[800],
+    },
   }
 });

@@ -1,7 +1,8 @@
 import { Box, Divider, Paper, Typography, styled } from "@mui/material";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useState, useContext } from "react";
 import Switch from '@mui/material/Switch';
 import { grey } from '@mui/material/colors';
+import { ColorModeContext } from "../../../config/theme/themeContext";
 
 interface PreferencesSettingsProps {}
 
@@ -53,11 +54,14 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
  
 const PreferencesSettings: FunctionComponent<PreferencesSettingsProps> = () => {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
+  const colorMode = useContext(ColorModeContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    colorMode.toggleColorMode();
     setChecked(event.target.checked);
   };
+
   return ( 
     <Box>
       <Box>
