@@ -46,7 +46,7 @@ const BookPreview = ({ book } : { book: IBook }) => {
           <img 
               src={buildImgLink(book.imageLink)}
               alt={book.title}
-              style={{ borderRadius: '10px', objectFit: 'contain' }}
+              style={{ borderRadius: '10px', objectFit: 'contain', maxWidth: '100%' }}
           />
         </Grid>
       </Grid>
